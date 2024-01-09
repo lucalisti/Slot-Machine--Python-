@@ -1,25 +1,27 @@
 import random
 
 
-MAX_LINES = 3    #Global Constant: doing it in all caps as its a constant value and its not going to change
+MAX_LINES = 3    #Global Constant: all caps as its a constant value and its not going to change
 MAX_BET = 100
 MIN_BET = 1
 
 ROWS = 3
 COLS = 3
 
+
+
 symbol_count = {
-    "A": 2,
-    "B": 4,
-    "C": 6,
-    "D": 8
+    "🤑": 2,
+    "💰": 4, 
+    "💵": 6,
+    "🪙": 8
 }
 
 symbol_value = {
-    "A": 5,
-    "B": 4,
-    "C": 3,
-    "D": 2
+    "🤑": 5,
+    "💰": 4,
+    "💵": 3,
+    "🪙": 2
 }
 
 def check_winnings(columns, lines, bet, values):
@@ -31,7 +33,7 @@ def check_winnings(columns, lines, bet, values):
             symbol_to_check = column[line]
             if symbol != symbol_to_check:
                 break
-        else:                                         #what this else statement will do, is tell us if we didn't break out of foor loop. If we break the else doesn't run, then if no break the else runs
+        else:                                         #what this else statement will do, is tell us if we didn't break out of for loop. If we break the else doesn't run,  if no break the else runs.
             winnings += values[symbol] * bet
             winning_lines.append(line + 1)
     
@@ -43,7 +45,7 @@ def check_winnings(columns, lines, bet, values):
 def get_slot_machine_spin(rows, cols, symbols):       #generation of items in our slot machine
     all_symbols = []
     for symbol, symbol_count in symbols.items():
-        for _ in range(symbol_count):                 #use "_" its an anoymous variable in Python, whenever you wanna loop through something but dont care about count or iteration value then use _ so you dont have an unused variable
+        for _ in range(symbol_count):                 #use "_" its an anoymous variable in Python, whenever you wanna loop through something but dont care about count or iteration value then use "_" so you dont have an unused variable
             all_symbols.append(symbol)
     
     columns = []
@@ -90,53 +92,50 @@ def get_number_of_lines():
     global last_lines
     while True:
         lines = input("Enter the number of lines you would like to bet on (1-" + str(MAX_LINES) + ")? ") #adds MAX_LINES as a string 
-        if lines == "r":
-            if last_lines is not None:
-                return last_lines
-            else:
-                print("No previous bet to replay.")
-        elif lines.isdigit():
+        if lines.isdigit():
             lines = int(lines)
-            if 1 <= lines <= MAX_LINES:
-                last_lines = lines       #Saves previous line selection
-                break
-            else:
-                print("Lines must be greater than 0!")
+        if 1 <= lines <= MAX_LINES:
+            last_lines = lines       #Saves previous line selection
+            break
         else:
-            print("Please enter a valid number of lines")
+            print("Lines must be greater than 0!")
     return lines 
 
 def get_bet():
     global last_bet
     while True:
         amount = input("What would you like to bet on each line? $")
-        if amount == "r":
-            if last_bet is not None:
-                return last_bet
-            else:
-                print("No previous bet to replay")
-        elif amount.isdigit():
+        if amount.isdigit():
             amount = int(amount)
-            if MIN_BET <= amount <= MAX_BET:
-                last_bet = amount        #Saves previous bet selection
-                break
-            else:
-                print(f"Bet must be between ${MIN_BET} - ${MAX_BET}")
+        if MIN_BET <= amount <= MAX_BET:
+            last_bet = amount        #Saves previous bet selection
+            break
         else:
-            print("Please enter a valid bet")
+            print(f"Bet must be between ${MIN_BET} - ${MAX_BET}")
     return amount 
 
 
 def spin(balance):
-    lines = get_number_of_lines()
-    while True:
+    global last_lines, last_bet
+    if last_lines is not None and last_bet is not None:
+        replay = input("Press 'r' to replay your last spin or 'n' to make a new bet: ")
+        if replay.lower() == 'r':
+            lines = last_lines
+            bet = last_bet
+        else:
+            lines = get_number_of_lines()
+            bet = get_bet()
+    else:
+        lines = get_number_of_lines()
+        bet = get_bet()
+
+    total_bet = bet * lines
+    
+    while total_bet > balance:
+        print(f"You do not have enough funds to place that bet, your current balance is: ${balance}")
+        lines = get_number_of_lines()
         bet = get_bet()
         total_bet = bet * lines
-
-        if total_bet > balance:
-            print(f"You do not have enough funds to place that bet, your current balance is: ${balance}")
-        else:
-            break
 
     print(f"You are betting ${bet} on {lines} lines. Your Total bet is equal to: ${total_bet} per spin.")
 
