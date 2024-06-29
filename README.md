@@ -1,8 +1,41 @@
-Simple 3 Reel Slot Machine made entirely with Python.
+# Simple 3 Reel Slot Machine
 
-Can simply run in your terminal by calling "python main.py".
+Welcome to the Simple 3 Reel Slot Machine! This is a command-line based slot machine game created entirely with Python.
 
-Deposit funds and change bet amount / lines.
+## Table of Contents
+- [About](#about)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Future Plans](#future-plans)
+- [Screenshots](#screenshots)
+- [Contributing](#contributing)
+- [License](#license)
 
-(**Planning to come back and make UI for this later**)
-<img width="484" alt="Screenshot 2024-06-23 at 2 31 25 PM" src="https://github.com/lucalisti/Slot-Machine--Python-/assets/137208685/b8268482-f992-4aad-9225-7c9f417deadc">
+## About
+This project is a simple implementation of a 3-reel slot machine game that can be played directly in your terminal. The game allows you to deposit funds, place bets, and spin the reels to try your luck. 
+
+## Features
+- **Deposit Funds**: Add money to your balance to start playing.
+- **Adjust Bet Amount**: Change the amount you want to bet per spin.
+- **Select Number of Lines**: Choose how many lines to bet on.
+- **Spin the Reels**: Try your luck by spinning the reels and see if you win!
+
+## Installation
+To get started, you'll need to have Python installed on your machine. If you don't have Python installed, you can download it from [python.org](https://www.python.org/).
+
+1. Clone the repository:
+    ```sh
+    git clone https://github.com/yourusername/simple-3-reel-slot-machine.git
+    ```
+2. Navigate to the project directory:
+    ```sh
+    cd simple-3-reel-slot-machine
+    ```
+
+## Usage
+To run the slot machine game, simply execute the following command in your terminal:
+```sh
+python main.py
+
+
