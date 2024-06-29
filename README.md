@@ -9,8 +9,7 @@ Welcome to the Simple 3 Reel Slot Machine! This is a command-line based slot mac
 - [Usage](#usage)
 - [Future Plans](#future-plans)
 - [Screenshots](#screenshots)
-- [Contributing](#contributing)
-- [License](#license)
+
 
 ## About
 This project is a simple implementation of a 3-reel slot machine game that can be played directly in your terminal. The game allows you to deposit funds, place bets, and spin the reels to try your luck. 
@@ -34,8 +33,15 @@ To get started, you'll need to have Python installed on your machine. If you don
     ```
 
 ## Usage
+
 To run the slot machine game, simply execute the following command in your terminal:
-```sh
-python main.py
+    - python main.py
+
+## Future Plans
+
+I plan to enhance this project by adding a graphical user interface (GUI) in the future to improve the user experience.
+
+## Screenshots
+<img width="553" alt="Screenshot 2024-06-28 at 7 57 04 PM" src="https://github.com/lucalisti/Slot-Machine--Python-/assets/137208685/e730eeab-75f8-4ea9-9630-f044262e2e44">
 
 
